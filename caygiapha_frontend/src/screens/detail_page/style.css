@@ -1,0 +1,314 @@
+/* ====== Tổng thể trang ====== */
+.detail-container {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  min-height: 180vh;
+  font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #2d3748;
+}
+
+/* ====== Card thông tin detail ====== */
+.detail-info-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.12);
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  min-height: 500px;
+  transition: all 0.3s ease;
+}
+
+.detail-info-card:hover {
+  box-shadow: 0 12px 48px rgba(102, 126, 234, 0.18);
+}
+
+/* ====== Box chi tiết detail ====== */
+.detail-detail-box {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  border: 2px solid #e8ecf4;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* ====== Ảnh thành viên lớn ====== */
+.member-avatar-large {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #667eea;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+}
+
+.member-avatar-large:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 48px rgba(102, 126, 234, 0.4);
+}
+
+.no-avatar {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #f0f4f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid #e2e8f0;
+}
+
+.no-avatar i {
+  font-size: 80px;
+  color: #cbd5e0;
+}
+
+/* ====== Các dòng thông tin ====== */
+.info-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 2px solid #f0f4f8;
+  align-items: center;
+}
+
+.info-row:last-of-type {
+  border-bottom: none;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.info-label i {
+  color: #667eea;
+  font-size: 18px;
+}
+
+.info-value {
+  font-size: 16px;
+  color: #1a202c;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* ====== Dòng tiểu sử (full width) ====== */
+.info-row-full {
+  padding: 20px 0;
+}
+
+.info-row-full .info-label {
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.info-row-full .info-label i {
+  color: #667eea;
+  font-size: 18px;
+}
+
+.info-value-full {
+  font-size: 15px;
+  color: #2d3748;
+  line-height: 1.8;
+  text-align: justify;
+  background: #f7fafc;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+}
+
+/* ====== Badge tình trạng ====== */
+.info-value .badge {
+  font-size: 14px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* ====== Nút quan hệ và thành tích ====== */
+.btn-relationship,
+.btn-achievement {
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+  border: none;
+  box-shadow: 0 6px 24px rgba(102, 126, 234, 0.35);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-relationship {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.btn-achievement {
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+}
+
+.btn-relationship::before,
+.btn-achievement::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.btn-relationship:hover::before,
+.btn-achievement:hover::before {
+  left: 100%;
+}
+
+.btn-relationship:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.5);
+}
+
+.btn-achievement:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(253, 160, 133, 0.5);
+}
+
+.btn-relationship:active,
+.btn-achievement:active {
+  transform: translateY(-2px);
+}
+
+.btn-relationship i,
+.btn-achievement i {
+  font-size: 18px;
+}
+
+/* ====== Alert styling ====== */
+.alert {
+  border-radius: 12px;
+  border: none;
+  padding: 16px 20px;
+  animation: slideDown 0.3s ease-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 992px) {
+  .info-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .detail-detail-box {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .detail-info-card {
+    padding: 20px 16px !important;
+    border-radius: 16px;
+  }
+
+  .detail-detail-box {
+    padding: 20px;
+  }
+
+  .member-avatar-large {
+    width: 150px;
+    height: 150px;
+  }
+
+  .no-avatar {
+    width: 150px;
+    height: 150px;
+  }
+
+  .no-avatar i {
+    font-size: 60px;
+  }
+
+  .info-row {
+    padding: 16px 0;
+  }
+
+  .info-label {
+    font-size: 14px;
+  }
+
+  .info-value {
+    font-size: 15px;
+  }
+
+  .info-value-full {
+    font-size: 14px;
+    padding: 16px;
+  }
+
+  .btn-relationship,
+  .btn-achievement {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .detail-info-card h5 {
+    font-size: 18px;
+  }
+
+  .member-avatar-large {
+    width: 120px;
+    height: 120px;
+  }
+
+  .no-avatar {
+    width: 120px;
+    height: 120px;
+  }
+
+  .no-avatar i {
+    font-size: 50px;
+  }
+
+  .info-label i {
+    font-size: 16px;
+  }
+}
+
+/* ====== Animations ====== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.detail-detail-box {
+  animation: fadeIn 0.6s ease-out;
+}

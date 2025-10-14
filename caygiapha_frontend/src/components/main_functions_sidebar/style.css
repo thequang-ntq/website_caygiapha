@@ -1,0 +1,16 @@
+.main-functions button {
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+.main-functions button:hover {
+  background-color: #4f6bed;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 3px 10px rgba(79, 107, 237, 0.3);
+}
+
+.main-btn-func.active {
+    color: white !important;
+    background-color: #4f6bed !important;
+}

@@ -1,0 +1,51 @@
+/* Tổng thể giao diện login */
+.login-container {
+  background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-card input:focus {
+  border-color: #4f6bed !important;
+  box-shadow: 0 0 0 0.2rem rgba(79, 107, 237, 0.25);
+}
+
+/* Nút đăng nhập */
+.btn-primary {
+  background-color: #4f6bed !important;
+  border: none;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #3b54d4 !important;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .login-card {
+    padding: 2rem 1.5rem;
+  }
+  .login-card h2 {
+    font-size: 1.4rem;
+  }
+}

@@ -1,0 +1,500 @@
+/* ====== Tổng thể trang ====== */
+.homepage-container {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  min-height: 100vh;
+  font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #2d3748;
+}
+
+/* ====== Container cây gia phả ====== */
+.tree-container {
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 60px 40px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  min-height: 500px;
+}
+
+.tree-root {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: inline-block;
+  position: relative;
+}
+
+/* ====== Layout các thế hệ ====== */
+.tree-children {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px;
+  position: relative;
+  padding-top: 100px;
+}
+
+/* ====== Node người ====== */
+.tree-node {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+}
+
+/* ====== Cặp vợ chồng ====== */
+.tree-person {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  min-height: 60px;
+}
+
+/* ====== Đường nối vợ chồng ====== */
+.tree-person::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 20px);
+  right: calc(50% - 20px);
+  height: 2px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transform: translateY(-50%);
+  z-index: 0;
+  box-shadow: 0 1px 3px rgba(102, 126, 234, 0.3);
+}
+
+/* ====== Card người - Nam ====== */
+.person {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.25);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
+  white-space: nowrap;
+  min-width: 140px;
+  cursor: pointer;
+}
+
+/* ====== Card người - Nữ ====== */
+.spouse {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  box-shadow: 0 8px 24px rgba(245, 87, 108, 0.25);
+}
+
+/* ====== Hiệu ứng hover chuyên nghiệp ====== */
+.person:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 16px 40px rgba(102, 126, 234, 0.4);
+}
+
+.spouse:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 16px 40px rgba(245, 87, 108, 0.4);
+}
+
+/* ====== Icon và badge thêm vào ====== */
+.person::before,
+.spouse::before {
+  content: "👤";
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 18px;
+  background: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.person:hover::before,
+.spouse:hover::before {
+  opacity: 1;
+}
+
+/* ====== Đường dọc từ giữa cặp vợ chồng xuống đường ngang anh chị em ====== */
+.tree-node > .tree-children::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  width: 3px;
+  height: 50px;
+  background: linear-gradient(180deg, #667eea 0%, #a8b3e8 100%);
+  transform: translateX(-50%);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(102, 126, 234, 0.3);
+}
+
+/* ====== Đường ngang nối các anh chị em ====== */
+.tree-children::after {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #a8b3e8 0%, #667eea 50%, #a8b3e8 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(102, 126, 234, 0.2);
+  z-index: 0;
+}
+
+/* ====== Đường dọc từ đường ngang xuống giữa mỗi cặp vợ chồng ====== */
+.tree-children > .tree-node::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  width: 3px;
+  height: 50px;
+  background: linear-gradient(180deg, #667eea 0%, #a8b3e8 100%);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* ====== Điểm nối tròn tại giao điểm ====== */
+.tree-children > .tree-node::after {
+  content: "";
+  position: absolute;
+  top: -52px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: #667eea;
+  border: 2px solid white;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 6px rgba(102, 126, 234, 0.4);
+  z-index: 1;
+}
+
+/* ====== Con duy nhất không cần đường ngang ====== */
+.tree-children:has(> .tree-node:only-child)::after {
+  display: none;
+}
+
+.tree-children:has(> .tree-node:only-child) > .tree-node::after {
+  display: none;
+}
+
+/* ====== Chat Method Selection Modal ====== */
+.chat-method-modal {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border: none;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.chat-method-modal .modal-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.chat-method-modal .modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d3748;
+  display: flex;
+  align-items: center;
+}
+
+.chat-method-modal .modal-title i {
+  font-size: 20px;
+  margin-right: 8px;
+  color: #667eea;
+}
+
+.chat-method-modal .btn-close {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  color: #a0aec0;
+  transition: color 0.3s ease;
+}
+
+.chat-method-modal .btn-close:hover {
+  color: #2d3748;
+}
+
+.chat-method-modal .modal-body {
+  padding: 24px;
+}
+
+.btn-chat-method {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-chat-method i {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.btn-messenger {
+  background: linear-gradient(135deg, #0078ff 0%, #00c4ff 100%);
+}
+
+.btn-messenger:hover {
+  background: linear-gradient(135deg, #005cc5 0%, #0099cc 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 120, 255, 0.3);
+}
+
+.btn-zalo {
+  background: linear-gradient(135deg, #0068ff 0%, #33aaff 100%);
+}
+
+.btn-zalo:hover {
+  background: linear-gradient(135deg, #0047b3 0%, #1e90ff 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 104, 255, 0.3);
+}
+
+.btn-internal {
+  background: linear-gradient(135deg, #28a745 0%, #48bb78 100%);
+}
+
+.btn-internal:hover {
+  background: linear-gradient(135deg, #1e7e34 0%, #38a169 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(40, 167, 69, 0.3);
+}
+
+/* ====== Responsive Professional ====== */
+@media (max-width: 1400px) {
+  .tree-children {
+    gap: 60px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .tree-children {
+    gap: 50px;
+  }
+  
+  .person,
+  .spouse {
+    font-size: 14px;
+    padding: 12px 24px;
+    min-width: 130px;
+  }
+}
+
+@media (max-width: 992px) {
+  .tree-container {
+    padding: 40px 20px;
+  }
+  
+  .tree-children {
+    gap: 40px;
+  }
+  
+  .tree-person {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tree-container {
+    padding: 30px 15px;
+  }
+  
+  /* Layout dọc cho mobile */
+  .tree-person {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Đường dọc nối vợ chồng trên mobile */
+  .tree-person::after {
+    top: calc(50% - 10px);
+    bottom: calc(50% - 10px);
+    left: 50%;
+    right: auto;
+    width: 3px;
+    height: 20px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .tree-children {
+    flex-direction: column;
+    gap: 60px;
+    padding-top: 80px;
+  }
+  
+  .tree-node > .tree-children::before {
+    top: -80px;
+    height: 50px;
+  }
+  
+  .tree-children > .tree-node::before {
+    top: -30px;
+    height: 30px;
+  }
+  
+  .tree-children > .tree-node::after {
+    display: none;
+  }
+  
+  /* Ẩn đường ngang trên mobile */
+  .tree-children::after {
+    display: none;
+  }
+  
+  .person,
+  .spouse {
+    font-size: 13px;
+    padding: 12px 22px;
+    min-width: 120px;
+  }
+
+  .chat-method-modal {
+    max-width: 90%;
+  }
+
+  .btn-chat-method {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+
+  .btn-chat-method i {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .person,
+  .spouse {
+    font-size: 12px;
+    padding: 10px 18px;
+    min-width: 100px;
+  }
+  
+  .tree-person {
+    gap: 15px;
+  }
+  
+  .tree-children {
+    gap: 50px;
+  }
+
+  .chat-method-modal .modal-title {
+    font-size: 16px;
+  }
+
+  .chat-method-modal .modal-title i {
+    font-size: 18px;
+  }
+
+  .btn-chat-method {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+
+  .btn-chat-method i {
+    font-size: 14px;
+  }
+}
+
+/* ====== Scrollbar hiện đại ====== */
+.tree-container::-webkit-scrollbar {
+  height: 10px;
+}
+
+.tree-container::-webkit-scrollbar-track {
+  background: #f1f3f9;
+  border-radius: 10px;
+  margin: 0 10px;
+}
+
+.tree-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+  border: 2px solid #f1f3f9;
+}
+
+.tree-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #5568d3 0%, #653a8b 100%);
+}
+
+/* ====== Animation fade in khi load ====== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tree-node {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.tree-node:nth-child(1) { animation-delay: 0.1s; }
+.tree-node:nth-child(2) { animation-delay: 0.2s; }
+.tree-node:nth-child(3) { animation-delay: 0.3s; }
+.tree-node:nth-child(4) { animation-delay: 0.4s; }
+.tree-node:nth-child(5) { animation-delay: 0.5s; }
+
+/* ====== Glow effect cho root node ====== */
+.tree-root > .tree-node > .tree-person .person {
+  box-shadow: 0 0 30px rgba(102, 126, 234, 0.4), 
+              0 8px 24px rgba(102, 126, 234, 0.25);
+}
+
+.tree-root > .tree-node > .tree-person .spouse {
+  box-shadow: 0 0 30px rgba(245, 87, 108, 0.4), 
+              0 8px 24px rgba(245, 87, 108, 0.25);
+}
+
+/* ====== Modal Animation ====== */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.chat-method-modal {
+  animation: modalFadeIn 0.3s ease-out;
+}
