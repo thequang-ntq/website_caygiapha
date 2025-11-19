@@ -1,0 +1,46 @@
+Cách chạy:
+1) Sau khi cài xong các phần mềm cần thiết: ReactJS, CodeIgniter 4, MySQL, VS Code, tải file zip trên github, mở thư mục sau khi giải nén file zip trong vs code.
+2) Mở notepad với quyền Administrator, mở C:\Windows\System32\drivers\etc -> mở file hosts trong notepad. Thêm dòng:
+` 127.0.0.1  	    caygiaphathongminh `
+3) Tạo 2 terminal
++ 1 terminal: cd caygiapha_backend -> php spark serve
++ 1 terminal: cd caygiapha_frontend -> npm run dev
+4) Mở đường link: http://caygiaphathongminh:5173/ để hiển thị trang web.
+Các tính năng:
+* Tóm tắt các tính năng:
+- Đăng nhập, Đăng xuất.
+- Xem, sửa dòng họ (Admin mới sửa được).
+- Xem thông tin cá nhân, đổi mật khẩu.
+- Xem, xem chi tiết, tìm kiếm, thêm, sửa, xóa sự kiện (Admin mới thêm, sửa, xóa được).
+- Xem, tìm kiếm, gửi tin nhắn cho các tài khoản khác.
+- Xem, xem chi tiết, tìm kiếm, thêm, sửa, xóa tài khoản (Admin mới vào được trang tài khoản).
+- Xem, xem chi tiết, tìm kiếm, thêm, sửa, xóa thành viên trong dòng họ (Admin mới vào được trang thành viên - Chỉnh sửa cây, User chỉ có thể bấm vào node trong cây gia phả để xem chi tiết thông tin các thành viên).
+- Xem, xem chi tiết, tìm kiếm, thêm, sửa, xóa quan hệ của thành viên trong dòng họ (Admin mới thêm, sửa, xóa được).
+- Xem, xem chi tiết, tìm kiếm, thêm, sửa, xóa thành tích của thành viên trong dòng họ (Admin mới thêm, sửa, xóa được).
+
+* Cụ thể:
+1) Đầu tiên hiển thị giao diện trang đăng nhập, ta nhập tên đăng nhập và mật khẩu được lấy từ bảng CSDL TaiKhoan trong CSDL caygiapha. Mỗi tài khoản có quyền riêng được hiển thị trong bảng CSDL TaiKhoan trong CSDL caygiapha, gồm 2 quyền: Admin / User.
+
+2) Sau khi đăng nhập thành công, hiển thị trang chủ: Trang chủ cho biết sơ đồ gia phả của dòng họ theo dạng cây gia phả. Hiện tại chỉ hiển thị cho 1 dòng họ duy nhất. Cả Admin và User đều có quyền xem trang chủ. Ngoài ra trang chủ còn có thông tin ảnh người dùng tài khoản, họ tên người dùng, ngày tháng năm hiện tại, và các link và các nút để chuyển qua các trang chức năng khác: Dòng họ, Thông tin cá nhân, Đăng xuất, Sự kiện, Tin nhắn, Tài khoản, Chỉnh sửa cây.
+
+3) Tiếp theo là các tính năng:
+3.1) Bấm vào link Dòng họ bên cạnh link Trang chủ đang xanh, ta chuyển qua trang dòng họ. Cả Admin và User đều có thể qua trang dòng họ này và xem thông tin dòng họ. Nhưng chỉ có Admin mới có thể thấy nút Sửa dòng họ và thực hiện sửa thông tin dòng họ. Khi Admin bấm nút Sửa dòng họ sẽ hiển thị một Modal cho phép chỉnh sửa thông tin dòng họ: tên, quê quán, tên chi nhánh, ghi chú. Các trường có nút * màu đỏ ở sau label là bắt buộc nhập. Sau đó bấm Cập nhật để kiểm tra thông tin được nhập là hợp lệ hay không, nếu hợp lệ thì sửa thành công.
+
+3.2.) Bấm vào link Thông tin cá nhân bên cạnh link Dòng họ, ta chuyển qua trang thông tin cá nhân. Cả Admin và User đều có thể qua trang thông tin cá nhân để xem thông tin cá nhân cũng như đổi mật khẩu cho tài khoản của mình. Các trường thông tin: Tên đăng nhập, Mật khẩu, Email, Quyền, Giới tính, Số điện thoại, Ngày sinh. Lưu ý Mật khẩu không thể xem mà chỉ hiển thị dưới dạng dấu "." vì lý do bảo mật. Khi bấm vào nút Đổi mật khẩu sẽ hiển thị Modal đổi mật khẩu: Mật khẩu cũ, Mật khẩu mới, Xác nhận mật khẩu mới. Mật khẩu cũ phải trùng với mật khẩu hiện tại, mật khẩu mới phải khác mật khẩu cũ, xác nhận mật khẩu mới phải trùng với mật khẩu mới. Bấm nút Xác nhận đổi để kiểm tra thông tin nhập, nếu thành công thì thông báo đổi mật khẩu.
+
+3.3) Bấm link Đăng xuất bên cạnh link Thông tin cá nhân để đăng xuất khỏi phiên làm việc. Cả Admin và User đều có.
+
+3.4) Bấm vào nút Sự kiện ngay dưới Label Các chức năng chính để qua trang Sự kiện. Cả Admin và User đều có thể xem, xem chi tiết, tìm kiếm sự kiện trong danh sách sự kiện. Nhưng Admin có thêm chức năng: Thêm, Sửa, Xóa. Khi Admin bấm vào Sự kiện tương ứng sẽ hiển thị thông tin chi tiết Sự kiện đó. Khi Admin bấm vào Thêm, Sửa sẽ hiển thị các Modal thêm, sửa sự kiện tương ứng. Khi bấm Admin Xóa sẽ hiển thị Modal xác nhận xóa, lưu ý xóa này là xóa cứng, sẽ xóa dữ liệu vĩnh viễn khỏi CSDL.
+
+3.5) Bấm vào nút Tin nhắn dưới nút Sự kiện. Cả Admin và User đều có thể thấy nút này. Khi bấm sẽ hiện Modal để chọn phương thức nhắn tin. Nếu chọn Messenger hoặc Zalo sẽ hiện link web Messenger hoặc Zalo ở tab mới. Còn nếu bấm Nội bộ sẽ chuyển qua trang nhắn tin trong web cây gia phả hiện tại. Có thể xem, tìm kiếm, gửi tin nhắn. Admin và User sẽ hiển thị danh sách tài khoản để nhắn tin. Bấm vào 1 tài khoản sẽ hiển thị danh sách tin nhắn của tài khoản hiện tại với tài khoản được chọn. Tin nhắn màu xanh tím ở bên phải là tin nhắn của tài khoản hiện tại đang đăng nhập, còn tin nhắn màu trắng ở bên trái là tin nhắn của tài khoản được chọn gửi cho tài khoản hiện tại. Ngoài ra còn có nút tìm kiếm tin nhắn để tìm kiếm các tin nhắn có nội dung chứa nội dung tìm kiếm.
+
+3.6) Tiếp theo là nút Tài khoản chỉ hiển thị đối với Admin ở dưới nút Tin nhắn. Khi bấm vào sẽ chuyển qua trang Tài khoản. Admin có thể xem, xem chi tiết, tìm kiếm, thêm, sửa, xóa tài khoản của các tài khoản, nhưng không thể xóa tài khoản của chính bản thân mình. Khi bấm tìm kiếm sẽ hiển thị các tài khoản mà tên đăng nhập, mật khẩu, email, quyền có chứa nội dung tìm kiếm. Bấm vào dòng Tài khoản tương ứng sẽ hiển thị dữ liệu chi tiết của Tài khoản đó. Bấm nút Thêm, Sửa sẽ hiện các Modal Thêm, Sửa tương ứng. Bấm nút Xóa sẽ hiển thị Modal xác nhận xóa tài khoản, nếu xác nhận xóa sẽ xóa cứng khỏi csdl (Xóa vĩnh viễn).
+
+3.7) Tiếp theo là nút Chỉnh sửa cây chỉ hiển thị đối với Admin ở dưới nút Tài khoản. Khi bấm vào sẽ chuyển qua trang Thành viên dòng họ. Admin có thể xem, xem chi tiết, tìm kiếm, thêm, sửa, xóa các thành viên có trong dòng họ. Nhưng Admin không thể xóa thông tin thành viên của bản thân. Khi bấm tìm kiếm sẽ hiển thị các thành viên có thông tin họ tên, giới tính, ngày sinh chứa nội dung tìm kiếm. Bấm vào dòng Thành viên tương ứng sẽ hiển thị dữ liệu chi tiết của Thành viên đó. Bấm nút Thêm, Sửa sẽ hiện các Modal Thêm, Sửa tương ứng. Bấm nút Xóa sẽ hiển thị Modal xác nhận xóa thành viên, nếu xác nhận xóa sẽ xóa cứng khỏi csdl (Xóa vĩnh viễn).
+
+3.8) Tiếp theo, khi bấm vào 1 node trong cây gia phả ở trang chủ, cả Admin và User đều có thể bấm, sẽ hiển thị trang Chi tiết thành viên trong dòng họ. Ngoài các thông tin về thành viên được chọn ra, ở dưới cùng sẽ có 2 nút Quan hệ và Thành tích để chuyển qua trang Quan hệ và trang Thành tích của thành viên được chọn, cả Admin và User đều thấy được và bấm vào được để chuyển trang.
+
+3.9) Tiếp theo, khi bấm vào nút Quan hệ ở 3.8 sẽ hiển thị trang Quan hệ của thành viên được chọn. Cả Admin và User đều có thể xem, xem chi tiết, tìm kiếm quan hệ của thành viên. Bấm vào dòng dữ liệu Quan hệ tương ứng để xem chi tiết Quan hệ. Nhập ô tìm kiếm để tìm ra các quan hệ có họ tên người quan hệ, loại quan hệ chứa nội dung tìm kiếm tương ứng. Nhưng chỉ Admin mới có thể thêm, sửa, xóa quan hệ. Lưu ý việc thêm sửa xóa này sẽ ảnh hưởng đến phần hiển thị cây gia phả ở ngoài (Mất liên kết giữa các node tương ứng). Thêm, sửa hiển thị Modal thêm, sửa. Xóa hiển thị Modal xác nhận xóa, nếu xác nhận xóa sẽ xóa vĩnh viễn khỏi CSDL.
+
+3.10) Tiếp theo, khi bấm vào nút Thành tích ở 3.8 sẽ hiển thị trang Thành tích của thành viên được chọn. Cả Admin và User đều có thể xem, xem chi tiết, tìm kiếm thành tích của thành viên. Bấm vào dòng dữ liệu Thành tích tương ứng để xem chi tiết Thành tích. Nhập ô tìm kiếm để tìm ra các thành tích có tiêu đề, ngày chứa nội dung tìm kiếm tương ứng. Nhưng chỉ Admin mới có thể thêm, sửa, xóa thành tích. Thêm, sửa hiển thị Modal thêm, sửa. Xóa hiển thị Modal xác nhận xóa, nếu xác nhận xóa sẽ xóa vĩnh viễn khỏi CSDL.
+

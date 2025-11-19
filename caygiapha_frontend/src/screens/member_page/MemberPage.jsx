@@ -12,6 +12,7 @@ import MainFunctionsSidebar from "../../components/main_functions_sidebar/MainFu
 const MemberPage = () => {
   const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState(false);
+  const [currentUserThanhVienId, setCurrentUserThanhVienId] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [members, setMembers] = useState([]);
   const [filteredMembers, setFilteredMembers] = useState([]);
@@ -51,8 +52,11 @@ const MemberPage = () => {
     }
     const parsedUser = JSON.parse(data);
     setIsAdmin(parsedUser.phanquyen === "Admin");
-    setCurrentUser(parsedUser.id);
+    setCurrentUser(parsedUser.id); // đây là taikhoan.id
 
+    // Thêm dòng này để lấy thanhvien_id của người đang đăng nhập
+    setCurrentUserThanhVienId(parsedUser.thanhvien_id);
+    
     fetchData();
   }, [navigate]);
 
@@ -389,12 +393,21 @@ const MemberPage = () => {
                         <td>{member.ngaysinh ? formatDate(member.ngaysinh) : <span className="text-muted fst-italic">Chưa có</span>}</td>
                         {isAdmin && (
                           <td className="text-center" onClick={(e) => e.stopPropagation()}>
-                            <button className="btn btn-sm btn-warning me-2" onClick={() => handleOpenEditModal(member)}>
-                              <i className="bi bi-pencil-square"></i> Sửa
+                            <button
+                              className="btn btn-sm btn-warning me-2"
+                              onClick={() => handleOpenEditModal(member)}
+                            >
+                              Sửa
                             </button>
-                            <button className="btn btn-sm btn-danger" onClick={() => handleOpenDeleteModal(member.id)}>
-                              <i className="bi bi-trash"></i> Xóa
-                            </button>
+
+                            {currentUserThanhVienId && member.id !== currentUserThanhVienId && (
+                              <button
+                                className="btn btn-sm btn-danger"
+                                onClick={() => handleOpenDeleteModal(member.id)}
+                              >
+                                Xóa
+                              </button>
+                            )}
                           </td>
                         )}
                       </tr>
